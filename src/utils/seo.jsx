@@ -45,8 +45,7 @@ export function generateOrganizationSchema() {
       "availableLanguage": siteConfig.business.availableLanguage
     },
     "sameAs": [
-      siteConfig.social.facebook,
-      siteConfig.social.twitter.replace('@', 'https://twitter.com/'),
+
       siteConfig.social.instagram
     ],
     "areaServed": {

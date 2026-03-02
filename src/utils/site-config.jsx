@@ -1,40 +1,48 @@
 // Configuración del sitio en JavaScript (en lugar de JSON)
 export const siteConfigData = {
-  site: {
-    name: "Movapp",
-    title: "El Hack hacia un nuevo inicio",
-    description: "Movapp es una organización que ayuda a personas víctimas de las aplicaciones de préstamo no reguladas mediante apoyo psicológico, asesoría personalizada y la aplicación de El Hack.",
-    keywords: "movapp, préstamos fraudulentos, montadeudas, hack financiero, asesoría financiera, aplicaciones de préstamo, cobranza abusiva, deudas, México",
-    author: "Movapp",
-    locale: "es_MX",
-    language: "es"
-  },
-  urls: {
-    production: "https://movapp.org",
-    staging: "https://stage.movapp.org",
-    development: "http://localhost:7001"
-  },
-  social: {
-    twitter: "@movapp_oficial",
-    facebook: "https://facebook.com/movapp",
-    instagram: "https://instagram.com/movapp_oficial"
-  },
-  assets: {
-    logo: "/images/logo.png",
-    defaultOgImage: "/images/movapp-og-image.jpg",
-    favicon: "/ico-movapp.ico"
-  },
-  business: {
-    country: "Mexico",
-    serviceType: "Asesoría Financiera",
-    contactType: "customer service",
-    availableLanguage: "Spanish"
-  },
-  seo: {
-    robots: {
-      staging: "noindex, nofollow",
-      production: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    },
-    themeColor: "#1a365d"
-  }
+   site: {
+      name: 'Gal-Cleanup',
+      title: 'Gal-Cleanup | Limpieza Profesional en CDMX',
+      description:
+         'Gal-Cleanup ofrece servicios profesionales de limpieza residencial, comercial y de oficinas en Ciudad de México. Personal capacitado, productos ecológicos y resultados garantizados.',
+      keywords:
+         'limpieza profesional, limpieza residencial, limpieza comercial, limpieza de oficinas, limpieza CDMX, servicio de limpieza Ciudad de México, limpieza post-obra, empresa de limpieza México',
+      author: 'Gal-Cleanup',
+      locale: 'es_MX',
+      language: 'es',
+   },
+   urls: {
+      production: 'https://movapp.org',
+      staging: 'https://stage.movapp.org',
+      development: 'http://localhost:7001',
+   },
+   social: {
+      instagram: 'https://www.instagram.com/gal_cleanup/',
+   },
+   contacto: {
+      WHATSAPP: '+5215578767442',
+      EMAIL: 'atencion_clientes@gal-cleanup.com.mx',
+      TELEFONO: '+525636663808',
+      DIRECCION: 'CDMX, Alvaro Obregón. San Bartolo Ameyalco, Cda de Cedros # 34B',
+   },
+   footer: {
+      COPYRIGHT: 'Gal-Cleanup © - Todos Los Derechos Reservados - 2026',
+   },
+   assets: {
+      logo: '/images/logo.png',
+      defaultOgImage: '/images/.jpg',
+      favicon: '/ico-movapp.ico',
+   },
+   business: {
+      country: 'Mexico',
+      serviceType: 'Servicios',
+      availableLanguage: 'Spanish',
+   },
+   seo: {
+      robots: {
+         staging: 'noindex, nofollow',
+         production: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+      },
+      themeColor: '#1a365d',
+   },
 };
