@@ -1,175 +1,178 @@
 ---
-import ButtonContact from '@/components/ButtonContact.astro';
 import Layout from '@layouts/Layout.astro';
-
-import ImgFacebook from '@assets/Icono-Facebook.png';
-import ImgInstagram from '@assets/Icono-Instagram.png';
-import ImgTiktok from '@assets/Icono-Tik-Tok.png';
-
-const ICONS = {
-   'Icono-Facebook.png': ImgFacebook,
-   'Icono-Instagram.png': ImgInstagram,
-   'Icono-Tik-Tok.png': ImgTiktok,
-};
-
-import { URLS, SOCIALS, VIDEOS } from '@constants/socials.ts';
-import { Picture } from 'astro:assets';
-
-const cardHover =
-   'border border-white/10 transition duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-105 cursor-pointer';
-
+import { siteConfigData } from '@/utils/site-config.jsx';
 import { generateServiceSchema } from '@/utils/seo.jsx';
+
 const serviceSchema = generateServiceSchema({
-   name: 'Asesoría para víctimas de aplicaciones de préstamo fraudulentas',
-   description: 'Ayudamos a personas víctimas de montadeudas con apoyo psicológico y asesoría legal',
+   name: 'Quiénes somos – Gal-Cleanup',
+   description: 'Empresa de limpieza profesional en CDMX con misión de satisfacción total, visión sustentable y equipo constantemente capacitado.',
 });
+
+const pillars = [
+   {
+      icon: '🎯',
+      title: 'Misión',
+      text: 'Brindar la satisfacción del cliente, haciendo realidad las expectativas en cualquier trabajo que apliquemos.',
+      accent: 'brand',
+   },
+   {
+      icon: '🔭',
+      title: 'Visión',
+      text: 'Posicionarnos entre las mejores empresas proveedoras en servicios de limpieza y mantenimiento apoyando el medio ambiente.',
+      accent: 'brand',
+   },
+   {
+      icon: '🎓',
+      title: 'Capacitación',
+      text: 'Brindamos capacitación constante, actualizando con temas a la vanguardia, para dar el mejor servicio.',
+      accent: 'sky',
+   },
+   {
+      icon: '🌿',
+      title: 'Productos',
+      text: 'Proporcionamos y aplicamos productos de calidad en apoyo al medioambiente.',
+      accent: 'sky',
+   },
+   {
+      icon: '📋',
+      title: 'Bitácora y reportes',
+      text: 'Damos un seguimiento administrativo para un mayor control.',
+      accent: 'indigo',
+   },
+   {
+      icon: '✅',
+      title: 'Servicios',
+      text: 'Los servicios se adaptan a las necesidades del cliente.',
+      accent: 'indigo',
+   },
+];
 ---
 
 <Layout
-   title="Movapp"
-   description="Movapp es una organización que ayuda a personas víctimas de las aplicaciones de préstamo no reguladas mediante apoyo psicológico, asesoría personalizada y la aplicación de El Hack."
+   title="Nosotros | Gal-Cleanup"
+   description="Conoce la misión, visión y pilares de Gal-Cleanup: empresa de limpieza profesional en CDMX comprometida con la calidad, el medioambiente y la satisfacción del cliente."
    type="website"
    schema={serviceSchema}
 >
-   <!-- Bienvenida -->
-   <div class="mx-auto mt-32 max-w-2xl px-4 md:px-0" data-aos="fade-down">
-      <div
-         class={`flex flex-col p-6 rounded-xl shadow-md 
-    
-    
-    ${cardHover}`}
-      >
-         <h2 class="mb-4 text-center text-xl md:text-4xl font-bold text-transparent bg-clip-text bg-text_banner">
-            Bienvenido a Movapp
-         </h2>
-         <p class="text-justify text-sm md:text-lg text-white">
-            Somos tu aliado digital en la lucha contra las aplicaciones no reguladas también llamadas montadeudas que
-            amenazan tu bienestar financiero y personal.
-         </p>
 
-         <div class="mt-4 flex justify-center">
-            <ButtonContact />
+   <!-- ─── HERO NOSOTROS ──────────────────────────────────────────────────── -->
+   <section class="relative bg-white py-20 px-4 md:px-12 overflow-hidden">
+      <!-- Fondo decorativo -->
+      <div class="absolute inset-0 pointer-events-none">
+         <div class="absolute top-0 right-0 w-2/5 h-full bg-brand-50 rounded-bl-[80px] hidden lg:block"></div>
+         <div class="absolute top-24 right-10 w-5 h-5 bg-brand-300 rounded-full opacity-50"></div>
+         <div class="absolute bottom-16 left-16 w-3 h-3 bg-brand-400 rounded-full opacity-40"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+         <!-- Texto -->
+         <div data-aos="fade-right" data-aos-duration="900">
+            <span class="inline-block bg-brand-100 text-brand-800 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
+               Quiénes somos
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-dark leading-tight mb-5">
+               Limpieza profesional –<br />
+               <em class="not-italic text-brand-600">con propósito real.</em>
+            </h1>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8 max-w-lg">
+               Somos Gal-Cleanup, una empresa mexicana especializada en servicios de limpieza y mantenimiento. Trabajamos con compromiso, calidad y respeto al medio ambiente en cada proyecto.
+            </p>
+            <a
+               href="#pilares"
+               class="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-brand-700/40 hover:-translate-y-0.5"
+            >
+               Conoce nuestros pilares &darr;
+            </a>
          </div>
 
-         <h2 class="mt-4 text-center text-sm md:text-lg font-bold text-white">Acerca de nosotros</h2>
-         <p class="text-justify text-sm md:text-lg text-white">
-            Desde 2021 hemos estado brindando apoyo constante a las personas que buscan recuperar el control de sus
-            vidas digitales, protegiendo su información personal y evitando el pago de deudas injustas generadas por
-            estas aplicaciones.
-         </p>
-
-         <h2 class="mt-5 text-center text-sm md:text-lg font-bold text-white">Nuestra misión es clara: PROTEGERTE.</h2>
-         <p class="text-justify text-sm md:text-lg text-white mt-2">
-            Queremos ayudar a personas que han sido víctimas de las aplicaciones no reguladas (montadeudas) que operan
-            con un malware llamado: SpyLoan. A través de un software especializado cuyo objetivo es evitar que los
-            montadeudas tengan acceso a tu información.
-         </p>
-      </div>
-   </div>
-
-   <!-- ¿Cómo nació <span class="text-text_banner">Movapp</span>? -->
-   <h2 class="mt-8 text-center text-xl font-bold text-white" data-aos="fade-up">
-      ¿Cómo nació
-      <span class="text-text_banner font-bold">Movapp</span>?
-   </h2>
-
-   <div class="mx-auto my-8 flex flex-col max-w-2xl px-4 md:px-0" data-aos="fade-up">
-      <div class={`my-2 flex flex-col p-6 rounded-lg shadow-md  ${cardHover}`}>
-         <h3 class="mb-2 text-left text-sm md:text-lg font-semibold text-white">El problema</h3>
-         <p class="text-justify text-sm md:text-lg text-white">
-            La idea surgió de una necesidad real. Hace algunos años, Erik Mann pidió un préstamo en una app, pero pronto
-            se vio atrapado en un ciclo de hostigamiento digital que afectó a él y a sus contactos.
-         </p>
-      </div>
-      <div class={`my-2 flex flex-col p-6 rounded-lg shadow-md  ${cardHover}`}>
-         <h3 class="mb-2 text-left text-lg font-semibold text-white">Erik sufrió las amenazas</h3>
-         <p class="text-justify text-sm md:text-lg text-white">
-            Su tranquilidad fue anulada por las amenazas y deudas generadas por apps no reguladas. Al llegar al límite,
-            Erik compartió su experiencia en el podcast Urban Arts y conectó con otras personas que pasaban por lo
-            mismo.
-         </p>
-      </div>
-      <div class={`my-2 flex flex-col p-6 rounded-lg shadow-md  ${cardHover}`}>
-         <h3 class="mb-2 text-left text-lg font-semibold text-white">Creación de EL HACK</h3>
-         <p class="text-justify text-sm md:text-lg text-white">
-            Erik se dio a la tarea de crear EL HACK, una herramienta que protege a los usuarios de aplicaciones
-            fraudulentas, ofreciéndoles una solución confiable y efectiva.
-         </p>
-      </div>
-   </div>
-
-   <!-- Video -->
-
-   <div class="mx-auto my-8 w-full max-w-full sm:max-w-xl md:max-w-md lg:max-w-2xl px-4 md:px-0" data-aos="fade-up">
-      <div class="w-full aspect-video overflow-hidden rounded-lg">
-         <iframe
-            src={VIDEOS.movapp}
-            class="w-full h-full sm:w-full lg:w-full max-w-full"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-         >
-         </iframe>
-      </div>
-   </div>
-
-   <!-- Redes sociales -->
-   <h2 class="mt-5 text-center text-sm md:text-lg font-bold text-white" data-aos="fade-right">
-      Redes Sociales de Nuestro CEO - Erik Mann
-   </h2>
-
-   <section class="mx-auto mt-12 mb-12 w-full max-w-3xl px-4 sm:px-8 md:px-0">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-         {
-            SOCIALS.filter((social) => social.name !== 'YouTube').map((social) => (
-               <div data-aos="fade-right">
-                  <a
-                     href={social.url}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class={`flex flex-col items-center p-8 text-center rounded-xl shadow-lg  ${cardHover} `}
-                  >
-                     <div class="mb-1 text-2xl font-bold text-white">{social.name}</div>
-                     <div class="relative mb-4">
-                        <Picture
-                           src={social.icon ? ICONS[social.icon] : undefined}
-                           alt={social.name}
-                           class="h-12 w-12 md:h-14 md:w-14"
-                        />
-                     </div>
-                     <span class="counter text-xl font-semibold text-white" data-target={social.count ?? 0}>
-                        0
-                     </span>
-                  </a>
-               </div>
-            ))
-         }
+         <!-- Imagen -->
+         <div class="relative" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+            <div class="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+               <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85"
+                  alt="Equipo Gal-Cleanup trabajando"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+               />
+               <div class="absolute inset-0 bg-gradient-to-t from-brand-950/20 to-transparent"></div>
+            </div>
+            <!-- Badge años -->
+            <div class="absolute -bottom-5 -left-5 bg-brand-700 text-white rounded-2xl shadow-xl px-6 py-4 hidden md:block" data-aos="fade-up" data-aos-delay="400">
+               <p class="text-3xl font-extrabold" data-count="10" data-suffix="+">10+</p>
+               <p class="text-brand-200 text-xs mt-0.5">Años de experiencia</p>
+            </div>
+         </div>
       </div>
    </section>
 
-   <!-- CTA final -->
-   <!-- <section class="flex flex-col items-center">
-    <JoinOurBlog />
-  </section> -->
+   <!-- ─── STATS ─────────────────────────────────────────────────────────── -->
+   <section class="bg-brand-900 py-10 px-4">
+      <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+         {[
+            { value: '500+', label: 'Clientes atendidos' },
+            { value: '10+',  label: 'Años de experiencia' },
+            { value: '98%',  label: 'Satisfacción' },
+            { value: '24h',  label: 'Respuesta garantizada' },
+         ].map((s, i) => (
+            <div data-aos="fade-up" data-aos-delay={i * 80}>
+               <p class="text-3xl font-extrabold text-white">{s.value}</p>
+               <p class="text-brand-300 text-xs mt-1 uppercase tracking-wider">{s.label}</p>
+            </div>
+         ))}
+      </div>
+   </section>
 
-   <script>
-      // Función de contador animado
-      document.querySelectorAll('.counter').forEach((counter) => {
-         const updateCounter = () => {
-            const target = +counter.getAttribute('data-target');
-            let current = +counter.textContent; // Cambiar innerText por textContent
-            const increment = target / 500;
+   <!-- ─── PILARES ───────────────────────────────────────────────────────── -->
+   <section id="pilares" class="bg-white py-24 px-4 md:px-12">
+      <div class="max-w-6xl mx-auto">
+         <div class="text-center mb-14" data-aos="fade-up">
+            <span class="text-brand-600 text-sm font-semibold tracking-widest uppercase">Lo que nos define</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-dark leading-tight">
+               Nuestros pilares
+            </h2>
+            <p class="mt-3 text-gray-500 max-w-lg mx-auto">
+               Cada aspecto de nuestro trabajo está guiado por valores concretos que garantizan resultados excepcionales.
+            </p>
+         </div>
 
-            if (current < target) {
-               current = Math.ceil(current + increment);
-               counter.textContent = current.toLocaleString(); // Formateo con comas
-               setTimeout(updateCounter, 1);
-            } else {
-               counter.textContent = target.toLocaleString(); // Formateo con comas
-            }
-         };
+         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pillars.map((p, i) => (
+               <div
+                  class="group bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-default"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 80}
+               >
+                  <!-- Icono -->
+                  <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center text-3xl mb-5 group-hover:bg-brand-100 transition-colors duration-300">
+                     {p.icon}
+                  </div>
+                  <!-- Contenido -->
+                  <h3 class="text-xl font-extrabold text-dark mb-3">{p.title}</h3>
+                  <p class="text-gray-500 leading-relaxed text-sm">{p.text}</p>
+                  <!-- Línea decorativa -->
+                  <div class="mt-6 h-1 w-12 bg-brand-400 rounded-full group-hover:w-20 transition-all duration-500"></div>
+               </div>
+            ))}
+         </div>
+      </div>
+   </section>
 
-         updateCounter();
-      });
-   </script>
+   <!-- ─── CTA ───────────────────────────────────────────────────────────── -->
+   <section class="bg-brand-50 py-20 px-4">
+      <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+         <h2 class="text-3xl md:text-4xl font-extrabold text-dark mb-4">
+            ¿Listo para trabajar <em class="not-italic text-brand-600">con nosotros</em>?
+         </h2>
+         <p class="text-gray-500 mb-8">Cotiza sin costo y sin compromisos. Nuestro equipo responde en menos de 24 horas.</p>
+         <a
+            href={`https://wa.me/${siteConfigData.contacto.WHATSAPP.replace(/\D/g, '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-brand-700/30"
+         >
+            💬 Escríbenos por WhatsApp
+         </a>
+      </div>
+   </section>
+
 </Layout>

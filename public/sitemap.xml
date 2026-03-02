@@ -3,37 +3,21 @@
 
   <!-- Página principal -->
   <url>
-    <loc>https://movapp.org/</loc>
+    <loc>https://gal-cleanup.com.mx/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Página de tienda -->
-  <url>
-    <loc>https://movapp.org/tienda</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+ 
 
   <!-- Página Nosotros -->
-  <url>
+  <!-- <url>
     <loc>https://movapp.org/nosotros</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url> -->
 
-  <!-- Página El Hack -->
-  <url>
-    <loc>https://movapp.org/el-hack</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
-  <!-- Página Red -->
-  <url>
-    <loc>https://movapp.org/red</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
 </urlset>

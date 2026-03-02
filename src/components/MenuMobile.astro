@@ -22,19 +22,27 @@ import CloseIcon from '@assets/CloseIcon.astro';
    <!-- Menú desplegable -->
    <nav
       id="menuNav"
-      class="absolute top-12 right-0 w-max bg-background_top/95 backdrop-blur-md shadow-lg rounded-lg p-4 flex flex-col gap-2 z-50 hidden"
+      class="absolute top-12 right-0 w-max bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 rounded-2xl p-4 flex flex-col gap-2 z-50 hidden"
    >
-      <a href="/" class="text-white text-sm hover:text-text_banner">Inicio</a>
-      <a href="/nosotros" class="text-white text-sm hover:text-text_banner">Movapp</a>
-      <a href="/el-hack" class="text-white text-sm hover:text-text_banner">Hack</a>
-      <a href="/tienda" class="text-white text-sm hover:text-text_banner">Tienda</a>
-
-      <!-- Nuevas opciones dentro del menú principal -->
-      <a href="/collaborations" class="text-white text-sm hover:text-text_banner">Colaboraciones</a>
-      <a href="/faqs" class="text-white text-sm hover:text-text_banner">Preguntas frecuentes</a>
-      <a href="/testimonials" class="text-white text-sm hover:text-text_banner">Testimonios</a>
-      <a href="/mind" class="text-white text-sm hover:text-text_banner">Mente digital</a>
-      <a href="/red" class="text-white text-sm hover:text-text_banner">Nuestras redes</a>
+      <a href="/" class="text-dark text-sm font-medium hover:text-brand-700 transition-colors px-2 py-1">Inicio</a>
+      <a href="/#nosotros" class="text-dark text-sm font-medium hover:text-brand-700 transition-colors px-2 py-1"
+         >Nosotros</a
+      >
+      <a href="/#servicios" class="text-dark text-sm font-medium hover:text-brand-700 transition-colors px-2 py-1"
+         >Servicios</a
+      >
+      <a href="/#contacto" class="text-dark text-sm font-medium hover:text-brand-700 transition-colors px-2 py-1"
+         >Contacto</a
+      >
+      <div class="border-t border-gray-100 mt-1 pt-2">
+         <a
+            href="https://wa.me/5215578767442"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-brand-700 hover:bg-brand-800 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors text-center"
+            >Cotiza ya &rarr;</a
+         >
+      </div>
    </nav>
 </div>
 
