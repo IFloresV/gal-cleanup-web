@@ -12,15 +12,15 @@ export const siteConfigData = {
       language: 'es',
    },
    urls: {
-      production: 'https://movapp.org',
-      staging: 'https://stage.movapp.org',
+      production: 'https://gal-cleanup.com.mx/',
+      staging: 'https://stage.gal-cleanup.com.mx',
       development: 'http://localhost:7001',
    },
    social: {
       instagram: 'https://www.instagram.com/gal_cleanup/',
    },
    contacto: {
-      WHATSAPP: '+5215578767442',
+      WHATSAPP: '+5215636663808',
       EMAIL: 'atencion_clientes@gal-cleanup.com.mx',
       TELEFONO: '+525636663808',
       DIRECCION: 'CDMX, Alvaro Obregón. San Bartolo Ameyalco, Cda de Cedros # 34B',
@@ -29,9 +29,10 @@ export const siteConfigData = {
       COPYRIGHT: 'Gal-Cleanup © - Todos Los Derechos Reservados - 2026',
    },
    assets: {
-      logo: '/images/logo.png',
-      defaultOgImage: '/images/.jpg',
-      favicon: '/ico-movapp.ico',
+      logo: ' /img/LogoTxt.png',
+      logoshort: ' /img/Logo.png',
+      defaultOgImage: '/img/default-og-image.jpg',
+      favicon: '/img/ico-gal-cleanup.ico',
    },
    business: {
       country: 'Mexico',

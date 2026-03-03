@@ -8,30 +8,27 @@ export default {
 
          colors: {
             debug: '#00ffff',
-            gray_mv: '#4A4A4A',
-            greylight_mv: '#767676',
-            purple_mv: '#8149E2',
-            background_top: '#0369a1',
-            background_bottom: '#0c4a6e',
-            text_banner: '#0284c7',
+            background_top: '#fffffff',
+            background_bottom: '#fffffff',
+            text_banner: '#fffffff',
             line_cards: '#ffffff',
 
-            // Gal-Cleanup brand colors – sky blue palette
+            // Gal-Cleanup brand colors – aqua blue palette
             brand: {
-               50: '#f0f9ff',
-               100: '#e0f2fe',
-               200: '#bae6fd',
-               300: '#7dd3fc',
-               400: '#38bdf8',
-               500: '#0ea5e9',
-               600: '#0284c7',
-               700: '#0369a1',
-               800: '#075985',
-               900: '#0c4a6e',
-               950: '#082f49',
+               50: '#ecfeff',
+               100: '#cffafe',
+               200: '#a5f3fc',
+               300: '#67e8f9',
+               400: '#22d3ee',
+               500: '#06b6d4',
+               600: '#0891b2',
+               700: '#0e7490',
+               800: '#155e75',
+               900: '#164e63',
+               950: '#083344',
             },
-            cream: '#f0f9ff',
-            dark: '#0f172a',
+            cream: '#ecfeff',
+            dark: '#071e27',
          },
          keyframes: {
             slideUp: {
@@ -53,6 +50,7 @@ export default {
       './src/**/*.{astro,html,js,jsx,ts,tsx}',
       './components/**/*.{astro,js,jsx,ts,tsx}',
       './layouts/**/*.{astro,js,jsx,ts,tsx}',
+      './sections/**/*.{astro,js,jsx,ts,tsx}',
    ],
    plugins: [],
 };

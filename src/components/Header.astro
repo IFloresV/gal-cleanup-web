@@ -1,8 +1,6 @@
 ---
 import MenuMobile from '@components/MenuMobile.astro';
-import ArrowIcon from '@assets/ArrowIcon.astro';
-
-const showHeaderLayer = import.meta.env.PUBLIC_SHOW_HEADER_LAYER === 'true';
+import { siteConfigData } from '@/utils/site-config.jsx';
 ---
 
 <header
@@ -10,13 +8,13 @@ const showHeaderLayer = import.meta.env.PUBLIC_SHOW_HEADER_LAYER === 'true';
 >
    <div class="flex items-center gap-2">
       <img
-         src="/LogoAzul.png"
+         src="img/LogoTxt.png"
          alt="Gal-Cleanup Logo"
          class="hidden md:block w-32 h-auto mx-auto my-4 transition-all duration-300"
       />
 
       <img
-         src="/LogoAzul.png"
+         src="img/Logo.png"
          alt="Gal-Cleanup Logo pequeño"
          class="block md:hidden w-10 h-auto mx-auto transition-all duration-300"
       />
@@ -28,10 +26,10 @@ const showHeaderLayer = import.meta.env.PUBLIC_SHOW_HEADER_LAYER === 'true';
       <a href="/#servicios" class="text-gray-700 hover:text-brand-700 font-medium transition-colors">Servicios</a>
       <a href="/#contacto" class="text-gray-700 hover:text-brand-700 font-medium transition-colors">Contacto</a>
       <a
-         href="https://wa.me/5215578767442"
+         href={`https://wa.me/${siteConfigData.contacto.WHATSAPP.replace(/\D/g, '')}`}
          target="_blank"
          rel="noopener noreferrer"
-         class="bg-brand-700 hover:bg-brand-800 text-white font-semibold px-5 py-2 rounded-full transition-all duration-300 text-xs tracking-wide"
+         class="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2 rounded-full transition-all duration-300 text-xs tracking-wide"
       >
          Cotiza ya &rarr;
       </a>
@@ -39,17 +37,6 @@ const showHeaderLayer = import.meta.env.PUBLIC_SHOW_HEADER_LAYER === 'true';
 
    <MenuMobile />
 </header>
-
-<!-- <script>
-   const servicesButton = document.getElementById('servicesButton');
-   const submenu = document.getElementById('submenu');
-   const arrowIcon = document.getElementById('arrowIcon');
-
-   servicesButton.addEventListener('click', () => {
-      submenu.classList.toggle('hidden');
-      arrowIcon.classList.toggle('rotate-180');
-   });
-</script> -->
 
 <script is:inline>
    document.addEventListener('click', function (e) {
