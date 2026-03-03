@@ -10,4 +10,4 @@ Disallow: /pruebas/
 Disallow: /404
 
 # Enlaza tu sitemap
-Sitemap: https://movapp.org/sitemap.xml
+Sitemap: https://gal-cleanup.com.mx/sitemap.xml

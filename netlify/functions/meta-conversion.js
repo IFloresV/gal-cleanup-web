@@ -84,7 +84,7 @@ export async function handler(event, context) {
          event_name,
          event_time: Math.floor(Date.now() / 1000),
          action_source: 'website',
-         event_source_url: event.headers?.referer || event.headers?.origin || 'https://movapp.org',
+         event_source_url: event.headers?.referer || event.headers?.origin || 'https://gal-cleanup.com.mx/',
          event_id: event_id || `server-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
          user_data: {
             client_ip_address:
