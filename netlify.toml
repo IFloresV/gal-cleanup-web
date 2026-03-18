@@ -5,6 +5,12 @@
 [functions]
   directory = "netlify/functions"
 
+[dev]
+  # Comando para levantar Astro en desarrollo
+  command = "npm run dev"
+  # Puerto donde Astro ya está configurado (ver astro.config.mjs)
+  targetPort = 7001
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
