@@ -65,14 +65,18 @@ export async function handler(event, context) {
       };
    }
 
+   const secureFlag = String(process.env.SMTP_SECURE || '').toLowerCase() === 'true';
+
    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: String('false' || '').toLowerCase() === 'true',
+      port: Number(process.env.SMTP_PORT) || (secureFlag ? 465 : 587),
+      secure: true,
       auth: {
          user: process.env.SMTP_USER,
          pass: process.env.SMTP_PASS,
       },
+      connectionTimeout: 30000,
+      greetingTimeout: 30000,
    });
 
    const mailSubject = subject || 'Nuevo mensaje desde el formulario de contacto';
