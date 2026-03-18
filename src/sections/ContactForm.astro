@@ -323,14 +323,13 @@ import { siteConfigData } from '@/utils/site-config.jsx';
          <!-- Right: Form -->
          <div class="lg:col-span-3 bg-white border border-gray-100 rounded-3xl shadow-sm p-8 reveal-right">
             <h3 class="text-2xl font-extrabold text-dark mb-1">Envíanos un mensaje</h3>
-            <p class="text-gray-500 text-sm mb-8">
+            <p class="text-gray-500 text-sm mb-3">
                Completa el formulario y nos pondremos en contacto contigo lo antes posible
             </p>
 
-            <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
-               <input type="hidden" name="form-name" value="contacto" />
-               <p class="hidden"><input name="bot-field" /></p>
+            <p id="contact-form-status" class="hidden text-sm mb-4 rounded-lg px-4 py-2 border"></p>
 
+            <form name="contacto" class="space-y-5" novalidate>
                <!-- Row 1 -->
                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
@@ -429,3 +428,145 @@ import { siteConfigData } from '@/utils/site-config.jsx';
       </div>
    </div>
 </section>
+
+<script>
+   /**
+    * Tipado mínimo para evitar errores en compilación.
+    */
+   const form = document.querySelector('form[name="contacto"]');
+   const statusEl = document.getElementById('contact-form-status');
+
+   if (form) {
+      form.addEventListener('submit', async (event) => {
+         event.preventDefault();
+
+         if (!statusEl) return;
+
+         const htmlForm = form instanceof HTMLFormElement ? form : null;
+         const submitButton = htmlForm?.querySelector('button[type="submit"]') ?? null;
+         const originalText = submitButton ? submitButton.textContent : '';
+
+         statusEl.classList.remove('hidden');
+         statusEl.textContent = 'Enviando tu mensaje...';
+         statusEl.className = 'text-sm mb-4 rounded-lg px-4 py-2 border border-brand-200 bg-brand-50 text-brand-700';
+
+         if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+         }
+
+         try {
+            if (!htmlForm) {
+               throw new Error('No se encontró el formulario de contacto.');
+            }
+
+            const formData = new FormData(htmlForm);
+
+            const nombre = formData.get('nombre')?.toString().trim() || '';
+            const email = formData.get('email')?.toString().trim() || '';
+            const telefono = formData.get('telefono')?.toString().trim() || '';
+            const mensaje = formData.get('mensaje')?.toString().trim() || '';
+            const servicio = formData.get('servicio')?.toString().trim() || '';
+
+            if (!nombre || !email || !mensaje) {
+               throw new Error('Por favor completa los campos obligatorios.');
+            }
+
+            const subject = 'Nuevo mensaje desde el formulario de contacto';
+
+            const response = await fetch('/.netlify/functions/contact-form', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                  name: nombre,
+                  email,
+                  phone: telefono,
+                  message: mensaje,
+                  subject,
+                  service: servicio,
+               }),
+            });
+
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok || !result.success) {
+               throw new Error(result?.error || 'Hubo un problema al enviar tu mensaje.');
+            }
+
+            // Tracking de Lead con Meta Pixel / CAPI si está disponible
+            try {
+               const metaUtils = window['metaPixelUtils'];
+
+               if (typeof window !== 'undefined' && metaUtils && metaUtils.trackEvent) {
+                  const { trackEvent } = metaUtils;
+
+                  // Deducción sencilla de nombre y apellido
+                  const parts = nombre.split(' ');
+                  const firstName = parts[0] || '';
+                  const lastName = parts.slice(1).join(' ') || '';
+
+                  let userCountry = 'MX';
+                  if (navigator.language) {
+                     const locale = navigator.language.toLowerCase();
+                     if (locale.includes('mx') || locale.includes('es-mx')) userCountry = 'MX';
+                     else if (locale.includes('co')) userCountry = 'CO';
+                     else if (locale.includes('ar')) userCountry = 'AR';
+                  }
+
+                  const timestamp = Date.now();
+
+                  trackEvent(
+                     'Lead',
+                     {
+                        content_name: 'Contact Form Submission',
+                        content_category: 'lead_generation',
+                        content_type: 'contact_form',
+                        lead_type: 'form_contact',
+                        lead_source: 'website_form',
+                        page_url: window.location.href,
+                        page_title: document.title,
+                        referrer_url: document.referrer || 'direct',
+                        service: servicio || 'general',
+                        value: 80,
+                        currency: 'MXN',
+                        country: userCountry,
+                        campaign_source: new URLSearchParams(window.location.search).get('utm_source') || 'organic',
+                        campaign_medium: new URLSearchParams(window.location.search).get('utm_medium') || 'website',
+                        campaign_name:
+                           new URLSearchParams(window.location.search).get('utm_campaign') || 'contact_form',
+                        session_id: sessionStorage.getItem('session_id') || `session-${timestamp}`,
+                     },
+                     {
+                        em: email ? [email] : [],
+                        ph: telefono ? [telefono.replace(/\D/g, '')] : [],
+                        fn: firstName ? [firstName] : [],
+                        ln: lastName ? [lastName] : [],
+                        country: [userCountry],
+                     },
+                  );
+               }
+            } catch (e) {
+               // Silenciar errores de tracking para no afectar la UX del formulario
+            }
+
+            statusEl.textContent = '¡Gracias! Tu mensaje se envió correctamente.';
+            statusEl.className = 'text-sm mb-4 rounded-lg px-4 py-2 border border-green-200 bg-green-50 text-green-700';
+
+            if (htmlForm instanceof HTMLFormElement) {
+               htmlForm.reset();
+            }
+         } catch (error) {
+            statusEl.textContent = error?.message || 'No pudimos enviar tu mensaje. Inténtalo de nuevo más tarde.';
+            statusEl.className = 'text-sm mb-4 rounded-lg px-4 py-2 border border-red-200 bg-red-50 text-red-700';
+         } finally {
+            const submitButton = htmlForm.querySelector('button[type="submit"]');
+            if (submitButton instanceof HTMLButtonElement) {
+               submitButton.disabled = false;
+               submitButton.textContent = originalText || 'Enviar mensaje →';
+            }
+         }
+      });
+   }
+</script>
