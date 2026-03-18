@@ -13,22 +13,22 @@ export default {
             text_banner: '#fffffff',
             line_cards: '#ffffff',
 
-            // Gal-Cleanup brand colors – aqua blue palette
+            // Gal-Cleanup brand colors – steel blue palette (anchor: #64afd5)
             brand: {
-               50: '#ecfeff',
-               100: '#cffafe',
-               200: '#a5f3fc',
-               300: '#67e8f9',
-               400: '#22d3ee',
-               500: '#06b6d4',
-               600: '#0891b2',
-               700: '#0e7490',
-               800: '#155e75',
-               900: '#164e63',
-               950: '#083344',
+               50: '#f0f8fd',
+               100: '#d9eef8',
+               200: '#b0dbf1',
+               300: '#7fc3e8',
+               400: '#64afd5',
+               500: '#3a94c2',
+               600: '#2878a4',
+               700: '#1e5c80',
+               800: '#154360',
+               900: '#0e2d40',
+               950: '#081b27',
             },
-            cream: '#ecfeff',
-            dark: '#071e27',
+            cream: '#f0f8fd',
+            dark: '#081b27',
          },
          keyframes: {
             slideUp: {
